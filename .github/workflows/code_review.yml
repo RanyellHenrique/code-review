@@ -4,11 +4,13 @@ on:
   pull_request:
     types: [opened, synchronize]
     
-permissions: write-all
 jobs:
   review:
     runs-on: ubuntu-latest
-      steps:
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
       - uses: actions/checkout@v3
       - name: "Get diff of the pull request"
         id: get_diff
