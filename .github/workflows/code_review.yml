@@ -1,18 +1,24 @@
 name: AI Code Reviewer
 
-on: [push]
+on:
+  pull_request:
+  
 permissions: write-all
 jobs:
   review:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
-      - name: Teste run
-        run: |
-          echo 'Pasta atual'
-          pwd
-          echo 'lista de arquivos'
-          ls -la
+      steps:
+      - uses: actions/checkout@v3
+      - name: "Get diff of the pull request"
+        id: get_diff
+        shell: bash
+        env:
+          PULL_REQUEST_HEAD_REF: "${{ github.event.pull_request.head.ref }}"
+        run: |-
+          git fetch origin "${{ env.PULL_REQUEST_HEAD_REF }}:${{ env.PULL_REQUEST_HEAD_REF }}"
+          git checkout "${{ env.PULL_REQUEST_HEAD_REF }}"
+          git diff "origin/${{ env.PULL_REQUEST_HEAD_REF }}" > "diff.txt"
+          # shellcheck disable=SC2086
+          echo "diff=$(cat "diff.txt")" >> $GITHUB_ENV
         
           
