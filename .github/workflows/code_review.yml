@@ -13,6 +13,6 @@ jobs:
           echo 'Pasta atual'
           pwd
           echo 'lista de arquivos'
-          ls la
+          ls -la
         
           
