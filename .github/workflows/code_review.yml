@@ -2,7 +2,8 @@ name: AI Code Reviewer
 
 on:
   pull_request:
-  
+    types: [opened, synchronize]
+    
 permissions: write-all
 jobs:
   review:
