@@ -18,7 +18,10 @@ child.sendcontrol('[')
 # Pressione Enter
 child.sendline('')
 
-child.expect('otsop')
+# Pressione Enter e Esc
+child.send('\x1b\x0d') 
+
+child.expect('otsop', 60)
 
 # Obtém a saída do processo
 before = child.before
