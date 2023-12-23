@@ -1,6 +1,7 @@
 import json
 import os
 from typing import List
+import pexpect
 
 import click
 import requests
@@ -26,6 +27,7 @@ def get_review_prompt() -> str:
     Suponha que você analise este PR como um excelente engenheiro de software e um excelente engenheiro de segurança.
     Você pode me contar os problemas com diferenças em uma solicitação pull e fornecer sugestões para melhorá-la?
     Você pode fornecer um resumo da revisão e comentários sobre os problemas por arquivo, se algum problema importante for encontrado.
+    Após encerar a resposta envie a palavra final ao contrario.
     """
     return template
 
@@ -36,6 +38,7 @@ def get_summarize_prompt() -> str:
     Eles são gerados por uma inteligência artificial generativa.
     Você pode resumi-los?
     Seria bom focar em destacar problemas e fornecer sugestões para melhorar a solicitação pull.
+    Após encerar a resposta envie a palavra final ao contrario.
     """
     return template
 
@@ -78,7 +81,7 @@ def get_review(
     # Get summary by chunk
     chunked_reviews = []
     for chunked_diff in chunked_diff_list:
-        response = "TEXTO DE CODE REVIEW"
+        response = get_code_review_stk_ai(review_prompt)
         review_result = response
         chunked_reviews.append(review_result)
     # If the chunked reviews are only one, return it
@@ -135,6 +138,25 @@ def main(
         body=review_comment
     )
 
+def get_code_review_stk_ai(review_prompt: str):
+    stk_ia = "stk ai"
+    child = pexpect.spawn(stk_ia, encoding='utf-8')
+    child.expect('>>>')
+    print("Enviando a pergunta para o stk ai")
+    child.sendline(review_prompt)
+    print("Precionando esc + enter")
+    child.send('\x1b\r')
+    child.expect('lanif')
+    # Obtém a saída do processo
+    response = child.before
+    after = child.after
+    buffer = child.buffer
+
+    # Imprime a saída
+    print(f"Saída do comando(before): {response}")
+    print(f"Saída do comando(after): {after}")
+    print(f"Saída do comando(buffer): {buffer}")
+    return response
 
 if __name__ == "__main__":
     # pylint: disable=no-value-for-parameter
