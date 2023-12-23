@@ -13,9 +13,8 @@ print("Enviando a pergunta para o stk ai")
 child.sendline(question)
 
 print("Precionando esc + enter")
-child.send("\x40\x1b")
-
-
+child.sendcontrol('[')
+child.send('M')
 
 child.expect('otsop')
 
