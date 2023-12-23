@@ -10,11 +10,7 @@ process = subprocess.Popen(stk_ia.split(), stdin=subprocess.PIPE, stdout=subproc
 # Envia o comando SQL para o cliente MySQL e obtém a resposta
 stdout, stderr = process.communicate(question)
 
-keyboard.press("alt gr")
-keyboard.press("enter")
-
-keyboard.release("alt gr")
-keyboard.release("enter")
+keyboard.send('alt gr+enter')
 
 # Verifica se houve algum erro
 if process.returncode != 0:
