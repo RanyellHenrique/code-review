@@ -23,5 +23,7 @@ child.expect('|=+', 60)
 # Obtém a saída do processo
 stdout = child.before
 
+after = child.after
 # Imprime a saída
 print(f"Saída do comando: {stdout}")
+print(f"Saída do comando: {after}")
