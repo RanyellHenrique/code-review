@@ -19,12 +19,14 @@ jobs:
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
 
+      -uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip requests
 
       - name: Execute Python Script
         id: python_exec
-        with:
-          python-version: 3.8
         run: |
           python application.py 
