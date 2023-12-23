@@ -11,9 +11,6 @@ import pexpect
 # Inicia o processo
 child = pexpect.spawn(stk_ia)
 
-# Espera que o processo esteja pronto para receber a entrada
-child.expect('algum padrão que o stk ai produz antes de aceitar a entrada')
-
 # Envia a pergunta para o processo
 child.sendline(question)
 
