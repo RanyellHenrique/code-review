@@ -18,7 +18,7 @@ child.sendcontrol('[')
 child.sendline('')
 
 # Espera a resposta
-child.expect('|=+', 60)
+child.expect('>>>', 60)
 
 # Obtém a saída do processo
 before = child.before
