@@ -1,5 +1,4 @@
 import pexpect
-import keyboard
 
 stk_ia = "stk ai"
 
@@ -13,8 +12,6 @@ child.expect('>>>')
 child.sendline(question)
 
 child.send('\x1b\x0d')
-
-keyboard.send('right alt+enter')
 
 child.expect('otsop')
 
