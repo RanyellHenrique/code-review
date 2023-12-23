@@ -1,18 +1,12 @@
 import subprocess
-
+import pexpect
 
 stk_ia = "stk ai"
 
 question = "Como posso fazer um bom code review?"
 
-# Use 'pexpect' para simular interação com terminal se necessário
-# Você precisará instalar o módulo pexpect com 'pip install pexpect'
-import pexpect
-
-# Inicia o processo
 child = pexpect.spawn(stk_ia)
 
-# Espera que o processo esteja pronto para receber a entrada
 child.expect('> Bem-vindo ao StackSpot Ai. Por favor, insira seu prompt abaixo:')
 
 # Envia a pergunta para o processo
