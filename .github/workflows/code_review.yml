@@ -44,3 +44,5 @@ jobs:
         run: |
           curl -fsSL https://stk.stackspot.com/install.sh | bash && exec $SHELL
           stk login --client-id $STK_CLIENT_ID --client-key $STK_CLIENT_KEY --realm $STK_REALM
+          stk ai
+          como obter a resposta de um select mysql via terminal via python sendo que o client mysql não é finalizado? 
