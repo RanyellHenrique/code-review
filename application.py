@@ -22,7 +22,7 @@ child.sendline('')
 child.expect('>>>')
 
 # Obtém a saída do processo
-after = child.after('>>>')
+after = child.after()
 before = child.before()
 
 # Imprime a saída
