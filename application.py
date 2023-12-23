@@ -1,7 +1,5 @@
+import subprocess
 import pexpect
-
-
-print("Iniciando consulta ao StackSpot AI")
 
 stk_ia = "stk ai"
 
@@ -15,8 +13,7 @@ child.expect('>>>')
 child.sendline(question)
 
 # Pressione Enter
-child.send('\x1b')
-child.send('\x0d')
+child.send('\x1b\x0d') 
 
 child.expect('otsop')
 
