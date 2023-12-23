@@ -3,11 +3,11 @@ import pexpect
 
 stk_ia = "stk ai"
 
-question = "Como posso fazer um bom code review?"
+question = "Como posso fazer um bom code review? e sempre termine o texto da resposta com |=+"
 
 child = pexpect.spawn(stk_ia)
 
-child.expect('Alt+Enter')
+child.expect('>>>')
 
 # Envia a pergunta para o processo
 child.sendline(question)
@@ -18,7 +18,7 @@ child.sendcontrol('[')
 child.sendline('')
 
 # Espera a resposta
-child.expect('Alt+Enter', 60)
+child.expect('|=+', 60)
 
 # Obtém a saída do processo
 stdout = child.before
