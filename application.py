@@ -13,9 +13,7 @@ child.expect('>>>')
 # Envia a pergunta para o processo
 child.sendline(question)
 
-pyautogui.keyDown('esc')
-pyautogui.press('enter')
-pyautogui.keyUp('esc')
+pyautogui.press(['esc','enter'])
 
 child.expect('otsop')
 
