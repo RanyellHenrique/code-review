@@ -71,7 +71,6 @@ def chunk_string(input_string: str, chunk_size) -> List[str]:
 
 
 def get_review(
-        model: str,
         diff: str,
         prompt_chunk_size: int
 ):
@@ -111,13 +110,9 @@ def format_review_comment(summarized_review: str, chunked_reviews: List[str]) ->
 @click.command()
 @click.option("--diff", type=click.STRING, required=True, help="Pull request diff")
 @click.option("--diff-chunk-size", type=click.INT, required=False, default=3500, help="Pull request diff")
-@click.option("--model", type=click.STRING, required=False, default="gpt-3.5-turbo", help="Model")
-@click.option("--log-level", type=click.STRING, required=False, default="INFO", help="Presence penalty")
 def main(
         diff: str,
         diff_chunk_size: int,
-        model: str,
-        log_level: str
 ):
     # Set log level
     logger.level(log_level)
@@ -127,7 +122,6 @@ def main(
     # Request a code review
     chunked_reviews, summarized_review = get_review(
         diff=diff,
-        model=model,
         prompt_chunk_size=diff_chunk_size
     )
     logger.debug(f"Summarized review: {summarized_review}")

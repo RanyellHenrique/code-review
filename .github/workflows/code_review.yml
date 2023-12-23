@@ -1,5 +1,6 @@
 name: AI Code Reviewer
 
+
 on:
   pull_request:
     types: [opened, synchronize]
@@ -33,6 +34,8 @@ jobs:
           github_repository: ${{ github.repository }}
           github_pull_request_number: ${{ github.event.pull_request.number }}
           git_commit_hash: ${{ github.event.pull_request.head.sha }}
+          pull_request_diff: |-
+            ${{ steps.get_diff.outputs.pull_request_diff }}
 
       - uses: actions/setup-python@v2
         with:
@@ -43,6 +46,8 @@ jobs:
 
       - name: Execute Python Script
         id: python_exec
-      
-        run: |
-          python application.py 
+        run: |-
+          python application.py
+          args:
+            - "--diff-chunk-size=3500"
+            - "--diff=$pull_request_diff"
