@@ -13,8 +13,8 @@ child.expect('>>>')
 child.sendline(question)
 
 child.send('\x1b\x0d')
-keyboard.press('esc')
-keyboard.press('enter')
+
+keyboard.send('right alt+enter')
 
 child.expect('otsop')
 
