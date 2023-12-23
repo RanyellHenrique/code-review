@@ -29,6 +29,10 @@ jobs:
           client_id: ${{ secrets.STK_CLIENT_ID }}
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
+      
+      - name: Install
+        run: |
+          sudo apt-get install xdotool
 
       - uses: actions/setup-python@v2
         with:
