@@ -7,7 +7,7 @@ question = "Como posso fazer um bom code review?"
 
 child = pexpect.spawn(stk_ia)
 
-child.expect('> Bem-vindo ao StackSpot Ai. Por favor, insira seu prompt abaixo:', 60)
+child.expect('>>>   (Envie a requisição com ')
 
 # Envia a pergunta para o processo
 child.sendline(question)
