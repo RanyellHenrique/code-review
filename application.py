@@ -13,7 +13,7 @@ print("Enviando a pergunta para o stk ai")
 child.sendline(question)
 
 print("Precionando esc + enter")
-child.sendline('\x1b\r')
+child.sendline("\x1b\x40\r")
 
 child.expect('otsop')
 
