@@ -12,22 +12,11 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v3
-      - name: "Get diff of the pull request"
-        id: get_diff
-        shell: bash
-        run: |-
-          git fetch origin "${{ env.PULL_REQUEST_HEAD_REF }}:${{ env.PULL_REQUEST_HEAD_REF }}"
-          git checkout "${{ env.PULL_REQUEST_HEAD_REF }}"
-          git diff "origin/${{ env.PULL_REQUEST_HEAD_REF }}" > "diff.txt"
-          # shellcheck disable=SC2086
-          echo "diff=$(cat "diff.txt")" >> $GITHUB_ENV
-      
       - uses: stack-spot/stk-cli-action@v1.1
         with:
           client_id: ${{ secrets.STK_CLIENT_ID }}
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
-      
       - name: Exec StackSpot AI
         id: stack_spot_exec
         run: |
