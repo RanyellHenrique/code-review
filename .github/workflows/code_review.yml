@@ -30,11 +30,11 @@ jobs:
           client_id: ${{ secrets.STK_CLIENT_ID }}
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
-          github_repository: ${{ github.repository }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          github_pull_request_number: 2
-          git_commit_hash: ${{ github.event.pull_request.head.sha }}
-          pull_request_diff: |-
+          GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+          GIT_COMMIT_HASH: ${{ github.event.pull_request.head.sha }}
+          PULL_REQUEST_DIFF: |-
             ${{ steps.get_diff.outputs.pull_request_diff }}
 
       - uses: actions/setup-python@v2
@@ -50,11 +50,11 @@ jobs:
           client_id: ${{ secrets.STK_CLIENT_ID }}
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
-          github_repository: ${{ github.repository }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          github_pull_request_number: 2
-          git_commit_hash: ${{ github.event.pull_request.head.sha }}
-          pull_request_diff: |-
+          GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
+          GIT_COMMIT_HASH: ${{ github.event.pull_request.head.sha }}
+          PULL_REQUEST_DIFF: |-
             ${{ steps.get_diff.outputs.pull_request_diff }}
         run: |-
           python application.py
