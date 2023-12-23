@@ -7,7 +7,7 @@ question = "Como posso fazer um bom code review? e sempre termine o texto da res
 
 child = pexpect.spawn(stk_ia)
 
-child.expect('>>>')
+child.expect('>')
 
 # Envia a pergunta para o processo
 child.sendline(question)
