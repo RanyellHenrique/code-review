@@ -11,7 +11,6 @@ child.expect('(Envie a requisição com ')
 
 # Envia a pergunta para o processo
 child.sendline(question)
-child.sendcontrol('alt+enter')
 
 # Espera a resposta
 child.expect('(Envie a requisição com ')
