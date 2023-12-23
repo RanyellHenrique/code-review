@@ -11,9 +11,10 @@ child.expect('> Bem-vindo ao StackSpot Ai. Por favor, insira seu prompt abaixo:'
 
 # Envia a pergunta para o processo
 child.sendline(question)
+child.sendcontrol('alt+enter')
 
 # Espera a resposta
-child.expect(pexpect.EOF)
+child.expect('>>>   (Envie a requisição com ')
 
 # Obtém a saída do processo
 stdout = child.before
