@@ -1,28 +1,28 @@
 import subprocess
-import pexpect
+from pynput import keyboard
+from pynput.keyboard import Key
 
-stk_ia = "stk ai"
+# Função para pressionar e soltar teclas
+def press_and_release_keys(keys):
+    with keyboard.Controller() as controller:
+        for key in keys:
+            controller.press(key)
+        for key in reversed(keys):
+            controller.release(key)
 
-question = "Como posso fazer um bom code review? e sempre termine o texto da resposta com a palavra posto ao contrario"
+# Executar um programa que requer interação
+process = subprocess.Popen(['stk ai'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-child = pexpect.spawn(stk_ia)
+# Agora, você pode automatizar a entrada de teclado conforme necessário
+# Por exemplo, pressionando Enter e Alt simultaneamente
+process.stdin.write("Como posso fazer um bom code review?")
+press_and_release_keys([Key.alt_gr, Key.enter])
 
-child.expect('>>>')
+# Agora você pode interagir com o programa através do processo.stdin
+process.stdin.flush()
 
-# Envia a pergunta para o processo
-child.sendline(question)
+# Leia a saída do programa, se necessário
+output, error = process.communicate()
 
-# Pressione Enter
-child.send('\x1b\x0d') 
-
-child.expect('otsop')
-
-# Obtém a saída do processo
-before = child.before
-after = child.after
-buffer = child.buffer
-
-# Imprime a saída
-print(f"Saída do comando(before): {before}")
-print(f"Saída do comando(after): {after}")
-print(f"Saída do comando(buffer): {buffer}")
+print("Saída do programa:", output)
+print("Erro do programa:", error)
