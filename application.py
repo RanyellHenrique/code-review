@@ -22,9 +22,7 @@ child.sendline('')
 child.expect('>>>')
 
 # Obtém a saída do processo
-after = child.after()
 before = child.before()
 
 # Imprime a saída
-print(f"Saída do comando after: {after}")
 print(f"Saída do comando before: {before}")
