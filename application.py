@@ -8,9 +8,11 @@ child = pexpect.spawn(stk_ia)
 
 child.expect('>>>')
 
-# Envia a pergunta para o processo
+print("Enviando a pergunta para o stk ai")
+
 child.sendline(question)
 
+print("Precionando esc + enter")
 child.send('\x1b\x0d')
 
 child.expect('otsop')
