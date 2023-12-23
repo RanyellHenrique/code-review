@@ -11,6 +11,7 @@ child.expect('>>>')
 
 # Envia a pergunta para o processo
 child.sendline(question)
+
 # Pressione Esc
 child.sendcontrol('[')
 
@@ -21,7 +22,9 @@ child.sendline('')
 child.expect('>>>')
 
 # Obtém a saída do processo
-stdout = child.before
+after = child.after('>>>')
+before = child.before()
 
 # Imprime a saída
-print(f"Saída do comando: {stdout}")
+print(f"Saída do comando after: {after}")
+print(f"Saída do comando before: {before}")
