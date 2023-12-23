@@ -7,7 +7,7 @@ question = "Como posso fazer um bom code review?"
 
 child = pexpect.spawn(stk_ia)
 
-child.expect('>>>')
+child.expect('Esc depois Enter')
 
 # Envia a pergunta para o processo
 child.sendline(question)
@@ -18,7 +18,7 @@ child.sendcontrol('[')
 child.sendline('')
 
 # Espera a resposta
-child.expect('>>>')
+child.expect('Esc depois Enter')
 
 # Obtém a saída do processo
 stdout = child.before
