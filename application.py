@@ -1,24 +1,23 @@
 import subprocess
+import keyboard
 
 stk_ia = "stk ai"
 
 question = "Como posso fazer um bom code review?"
 
-# Use 'pexpect' para simular interação com terminal se necessário
-# Você precisará instalar o módulo pexpect com 'pip install pexpect'
-import pexpect
+process = subprocess.Popen(stk_ia.split(), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-# Inicia o processo
-child = pexpect.spawn(stk_ia)
+# Envia o comando SQL para o cliente MySQL e obtém a resposta
+stdout, stderr = process.communicate(question)
 
-# Envia a pergunta para o processo
-child.sendline(question)
+keyboard.press("esc")
+keyboard.press("enter")
 
-# Espera a resposta
-child.expect(pexpect.EOF)
+# Verifica se houve algum erro
+if process.returncode != 0:
+    print(f"Ocorreu um erro: {stderr}")
+else:
+    print(f"Saída do comando: {stdout}")
 
-# Obtém a saída do processo
-stdout = child.before
-
-# Imprime a saída
-print(f"Saída do comando: {stdout}")
+keyboard.release("esc")
+keyboard.release("enter")
