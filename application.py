@@ -1,6 +1,5 @@
-import subprocess
 import pexpect
-import pyautogui
+import keyboard
 
 stk_ia = "stk ai"
 
@@ -13,15 +12,16 @@ child.expect('>>>')
 # Envia a pergunta para o processo
 child.sendline(question)
 
-pyautogui.press(['alt gr','enter'])
-child.send('\x1b\x0d') 
+child.send('\x1b\x0d')
+keyboard.press(['esc', 'enter'])
+
 
 child.expect('otsop')
 
 # Obtém a saída do processo
-before = child.before
-after = child.after
-buffer = child.buffer
+before = child.before.decode('utf-8')
+after = child.after.decode('utf-8')
+buffer = child.buffer.decode('utf-8')
 
 # Imprime a saída
 print(f"Saída do comando(before): {before}")
