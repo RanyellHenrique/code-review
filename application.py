@@ -21,9 +21,11 @@ child.sendline('')
 child.expect('|=+', 60)
 
 # Obtém a saída do processo
-stdout = child.before
+before = child.before
 after = child.after
+buffer = child.buffer
 
 # Imprime a saída
-print(f"Saída do comando: {stdout}")
-print(f"Saída do comando: {after}")
+print(f"Saída do comando(before): {before}")
+print(f"Saída do comando(after): {after}")
+print(f"Saída do comando(buffer): {buffer}")
