@@ -1,5 +1,6 @@
 import subprocess
 import pexpect
+import pyautogui
 
 stk_ia = "stk ai"
 
@@ -12,8 +13,9 @@ child.expect('>>>')
 # Envia a pergunta para o processo
 child.sendline(question)
 
-# Pressione Enter
-child.sendline('\x1b\x0d') 
+pyautogui.keyDown('esc')
+pyautogui.press('enter')
+pyautogui.keyUp('esc')
 
 child.expect('otsop')
 
