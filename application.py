@@ -1,6 +1,9 @@
 import subprocess
 import pexpect
 
+
+print("Iniciando consulta ao StackSpot AI")
+
 stk_ia = "stk ai"
 
 question = "Como posso fazer um bom code review? e sempre termine o texto da resposta com a palavra posto ao contrario"
