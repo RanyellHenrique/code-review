@@ -15,7 +15,7 @@ child.sendline(question)
 print("Precionando esc + enter")
 child.send("\x1b\r")
 
-child.expect('otsop', 60)
+child.expect('otsop', 120)
 
 # Obtém a saída do processo
 before = child.before
