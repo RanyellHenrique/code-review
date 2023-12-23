@@ -47,5 +47,4 @@ jobs:
       - name: Exec StackSpot AI
         id: stack_spot_exec
         run: |
-          stk ai
-          como obter a resposta de um select mysql via terminal via python sendo que o client mysql não é finalizado? 
+          stk -v
