@@ -17,7 +17,6 @@ child.sendcontrol('[')
 
 # Pressione Enter
 child.sendline('')
-child.send('\x1b\x0d') 
 
 child.expect('otsop')
 
