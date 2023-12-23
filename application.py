@@ -13,9 +13,9 @@ print("Enviando a pergunta para o stk ai")
 child.sendline(question)
 
 print("Precionando esc + enter")
-child.send('\x1b\x0d')
+child.send(b'\x1b\x0d')
 
-child.expect('>>>')
+child.expect('otsop')
 
 # Obtém a saída do processo
 before = child.before
