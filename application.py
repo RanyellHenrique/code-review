@@ -17,7 +17,7 @@ child.sendline(question)
 # Pressione Enter
 child.sendline('\x1b\x0d') 
 
-child.expect('otsop', 60)
+child.expect('otsop')
 
 # Obtém a saída do processo
 before = child.before
