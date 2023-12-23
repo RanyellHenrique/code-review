@@ -18,7 +18,7 @@ child.sendcontrol('[')
 child.sendline('')
 
 # Espera a resposta
-child.expect('Alt+Enter')
+child.expect('Alt+Enter', 60)
 
 # Obtém a saída do processo
 stdout = child.before
