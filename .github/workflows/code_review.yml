@@ -32,7 +32,7 @@ jobs:
           realm: ${{ secrets.STK_REALM }}
           github_repository: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          github_pull_request_number: ${{ github.event.pull_request.number }}
+          github_pull_request_number: 2
           git_commit_hash: ${{ github.event.pull_request.head.sha }}
           pull_request_diff: |-
             ${{ steps.get_diff.outputs.pull_request_diff }}
