@@ -1,7 +1,7 @@
 import subprocess
 
 # Executar um programa que requer interação
-process = subprocess.Popen(['stk ai'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+process = subprocess.Popen(['stk', 'ai'], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
 
 process.stdin.write("Como fazer um code review?")
