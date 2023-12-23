@@ -3,7 +3,7 @@ import pexpect
 
 stk_ia = "stk ai"
 
-question = "Como posso fazer um bom code review? e sempre termine o texto da resposta com |=+"
+question = "Como posso fazer um bom code review? e sempre começe o texto da resposta com |=+"
 
 child = pexpect.spawn(stk_ia)
 
