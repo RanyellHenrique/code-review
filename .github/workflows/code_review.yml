@@ -42,11 +42,11 @@ jobs:
           python-version: 3.12
       
       - name: Install Python dependencies
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python -m pip install --upgrade pip requests pip install pexpect pip install keyboard pip install click pip install click loguru
 
       - name: Execute Python Script
         id: python_exec
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |-
           python application.py
