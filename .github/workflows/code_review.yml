@@ -12,7 +12,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v3
-        name: "Get diff of the pull request"
+      - name: "Get diff of the pull request"
         id: get_diff
         shell: bash
         env:
@@ -23,7 +23,7 @@ jobs:
           git diff "origin/${{ env.PULL_REQUEST_HEAD_REF }}" > "diff.txt"
           # shellcheck disable=SC2086
           echo "diff=$(cat "diff.txt")" >> $GITHUB_ENV
-          
+
       - name: Download StackSpot
         id: stack_spot_download
         shell: bash
@@ -44,7 +44,3 @@ jobs:
         run: |
           curl -fsSL https://stk.stackspot.com/install.sh | bash && exec $SHELL
           stk login --client-id $STK_CLIENT_ID --client-key $STK_CLIENT_KEY --realm $STK_REALM
-
-
-
-          
