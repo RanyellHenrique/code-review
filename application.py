@@ -11,14 +11,9 @@ child.expect('>>>')
 
 # Envia a pergunta para o processo
 child.sendline(question)
-# Pressione Esc
-child.sendcontrol('[')
 
 # Pressione Enter
-child.sendline('')
-
-# Espera a resposta
-child.expect('>>>', 60)
+child.send('\x1b\x0d') 
 
 # Obtém a saída do processo
 before = child.before
