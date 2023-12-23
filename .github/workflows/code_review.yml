@@ -19,7 +19,7 @@ jobs:
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
 
-      -uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: 3.8
       
