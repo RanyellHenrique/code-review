@@ -1,4 +1,5 @@
 import pexpect
+import time
 
 stk_ia = "stk ai"
 
@@ -9,11 +10,13 @@ child = pexpect.spawn(stk_ia, encoding='utf-8')
 child.expect('>>>')
 
 print("Enviando a pergunta para o stk ai")
+time.sleep(1)
 
 child.sendline(question)
 
+
 print("Precionando esc + enter")
-child.sendline("\x1b\x40\r")
+child.send('\x1b\r')
 
 child.expect('otsop')
 
