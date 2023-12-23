@@ -15,7 +15,8 @@ child.expect('>>>')
 child.sendline(question)
 
 # Pressione Enter
-child.sendline('\x1b\x0d') 
+child.send('\x1b')
+child.send('\x0d')
 
 child.expect('otsop')
 
