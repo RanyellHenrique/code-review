@@ -90,7 +90,7 @@ def get_review(
 
     # Summarize the chunked reviews
     summarize_prompt = get_summarize_prompt()
-    response = "TEXTO DE CODE REVIEW"
+    response = get_code_review_stk_ai(review_prompt)
     summarized_review = response
     return chunked_reviews, summarized_review
 
