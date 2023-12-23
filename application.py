@@ -108,20 +108,18 @@ def format_review_comment(summarized_review: str, chunked_reviews: List[str]) ->
 
 
 @click.command()
-@click.option("--diff", type=click.STRING, required=True, help="Pull request diff")
 @click.option("--diff-chunk-size", type=click.INT, required=False, default=3500, help="Pull request diff")
 def main(
-        diff: str,
         diff_chunk_size: int,
 ):
     # Set log level
     logger.level(log_level)
     # Check if necessary environment variables are set or not
     check_required_env_vars()
-
+    
     # Request a code review
     chunked_reviews, summarized_review = get_review(
-        diff=diff,
+        diff=os.getenv("PULL_REQUEST_DIFF"),
         prompt_chunk_size=diff_chunk_size
     )
     logger.debug(f"Summarized review: {summarized_review}")

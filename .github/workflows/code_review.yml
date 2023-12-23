@@ -48,6 +48,3 @@ jobs:
         id: python_exec
         run: |-
           python application.py
-          args:
-            - "--diff-chunk-size=3500"
-            - "--diff=$pull_request_diff"
