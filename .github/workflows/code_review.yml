@@ -12,13 +12,19 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v3
+
       - uses: stack-spot/stk-cli-action@v1.1
         with:
           client_id: ${{ secrets.STK_CLIENT_ID }}
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
-      - name: Exec StackSpot AI
-        id: stack_spot_exec
+
+      - name: Install Python dependencies
+        run: python -m pip install --upgrade pip requests
+
+      - name: Execute Python Script
+        id: python_exec
+        with:
+          python-version: 3.8
         run: |
-          stk ai
-          como obter a resposta de um select mysql via terminal via python sendo que o client mysql não é finalizado? 
+          python application.py 
