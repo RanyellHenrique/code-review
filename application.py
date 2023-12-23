@@ -20,14 +20,12 @@ def check_required_env_vars():
             raise ValueError(f"{required_env_var} is not set")
 
 
-def get_review_prompt(extra_prompt: str = "") -> str:
+def get_review_prompt() -> str:
     template = f"""
     Esta é uma solicitação pull ou parte de uma solicitação pull se a solicitação pull for muito grande.
     Suponha que você analise este PR como um excelente engenheiro de software e um excelente engenheiro de segurança.
     Você pode me contar os problemas com diferenças em uma solicitação pull e fornecer sugestões para melhorá-la?
     Você pode fornecer um resumo da revisão e comentários sobre os problemas por arquivo, se algum problema importante for encontrado.
-
-    {extra_prompt}
     """
     return template
 
@@ -75,7 +73,7 @@ def get_review(
         prompt_chunk_size: int
 ):
     # Chunk the prompt
-    review_prompt = get_review_prompt(extra_prompt=extra_prompt)
+    review_prompt = get_review_prompt()
     chunked_diff_list = chunk_string(input_string=diff, chunk_size=prompt_chunk_size)
     # Get summary by chunk
     chunked_reviews = []
