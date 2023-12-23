@@ -12,10 +12,10 @@ child = pexpect.spawn(stk_ia)
 child.expect('>>>')
 
 # Envia a pergunta para o processo
-child.send(question)
+child.sendline(question)
 
 # Pressione Enter
-child.send('\033\x0d') 
+child.sendline('\x1b\x0d') 
 
 child.expect('otsop', 60)
 
