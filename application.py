@@ -14,9 +14,7 @@ child.sendline(question)
 
 print("Precionando esc + enter")
 child.send("\x1b\r")
-child.send("\x1b\r")
-child.send("\x1b\r")
-child.send("\x1b\r")
+child.send('\x1b\x0d')
 
 child.expect('otsop')
 
