@@ -1,4 +1,3 @@
-import subprocess
 import pexpect
 
 
@@ -16,7 +15,7 @@ child.expect('>>>')
 child.send(question)
 
 # Pressione Enter
-child.send('\x1B\x0D') 
+child.send('\033\x0d') 
 
 child.expect('otsop', 60)
 
