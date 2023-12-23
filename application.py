@@ -13,7 +13,7 @@ import pexpect
 child = pexpect.spawn(stk_ia)
 
 # Espera que o processo esteja pronto para receber a entrada
-child.expect('>>>')
+child.expect('> Bem-vindo ao StackSpot Ai. Por favor, insira seu prompt abaixo:')
 
 # Envia a pergunta para o processo
 child.sendline(question)
