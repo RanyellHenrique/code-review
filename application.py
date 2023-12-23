@@ -113,10 +113,10 @@ def main(
         diff_chunk_size: int,
 ):
     # Set log level
-    logger.level(log_level)
+    logger.level("INFO")
     # Check if necessary environment variables are set or not
     check_required_env_vars()
-    
+
     # Request a code review
     chunked_reviews, summarized_review = get_review(
         diff=os.getenv("PULL_REQUEST_DIFF"),
