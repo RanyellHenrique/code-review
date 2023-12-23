@@ -4,7 +4,7 @@ stk_ia = "stk ai"
 
 question = "Como posso fazer um bom code review? e sempre termine o texto da resposta com a palavra posto ao contrario"
 
-child = pexpect.spawn(stk_ia)
+child = pexpect.spawn(stk_ia, encoding='utf-8')
 
 child.expect('>>>')
 
