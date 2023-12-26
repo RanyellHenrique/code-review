@@ -2,7 +2,6 @@
 
 set mesage [lindex $argv 0]
 
-echo $mesage
 set timeout 100
 spawn stk ai
 expect ">>>"
