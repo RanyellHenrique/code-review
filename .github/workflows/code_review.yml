@@ -45,14 +45,7 @@ jobs:
         run:
            sudo apt-get install -y expect
       - name: test sh exec
-        run: |
-          #!/usr/bin/expect -f
-          spawn stk ai
-          expect ">>>"
-          send -- "Como posso fazer um bom code review? encerre a resposta com a palavra FINAL ao Contrario\r"
-          expect "LANIF"
-          send -- "\033\r" # This is the ESC key followed by Enter
-          interact
+        run: expect script.exp
       
       - name: Install Python dependencies
         run: python -m pip install --upgrade pip requests pip install pexpect
