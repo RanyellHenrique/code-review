@@ -46,7 +46,6 @@ jobs:
            sudo apt-get install -y expect
       - name: test sh exec
         run: |
-          ls -la
           expect script.sh
       
       - name: Install Python dependencies
