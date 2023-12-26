@@ -1,8 +1,4 @@
 #!/usr/bin/expect -f
-
-mensagem=$1
-echo $mensagem
-
 set timeout 100
 spawn stk ai
 expect ">>>"
