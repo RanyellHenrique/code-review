@@ -3,7 +3,9 @@ name: AI Code Reviewer
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    paths-ignore:
+      - "*.md"
+      - "LICENSE"
     
 jobs:
   review:
