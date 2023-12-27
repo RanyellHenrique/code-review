@@ -29,5 +29,6 @@ jobs:
         env:
           pull_request_diff: |-
             ${{ steps.get_diff.outputs.pull_request_diff }}
+        shell: bash
         run: | 
           echo $pull_request_diff
