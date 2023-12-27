@@ -29,7 +29,7 @@ def get_review_prompt() -> str:
     Suponha que você analise este PR como um excelente engenheiro de software e um excelente engenheiro de segurança.
     Você pode me contar os problemas com diferenças em uma solicitação pull e fornecer sugestões para melhorá-la?
     Você pode fornecer um resumo da revisão e comentários sobre os problemas por arquivo, se algum problema importante for encontrado.
-    Comece a resposta com INICIO ao contrario e encerre a resposta com a palavra FINAL ao Contrario.
+    Comece a resposta com INICIO ao contrario e encerre a resposta com a palavra FINAL ao contrario, mesmo se não for informado codigo.
     """
     return template
 
@@ -40,7 +40,7 @@ def get_summarize_prompt() -> str:
     Eles são gerados por uma inteligência artificial generativa.
     Você pode resumi-los?
     Seria bom focar em destacar problemas e fornecer sugestões para melhorar a solicitação pull.
-    Comece a resposta com INICIO ao contrario e encerre a resposta com a palavra FINAL ao Contrario.
+    Comece a resposta com INICIO ao contrario e encerre a resposta com a palavra FINAL ao contrario, mesmo se não for informado codigo.
     """
     return template
 
@@ -83,7 +83,7 @@ def get_review(
     # Get summary by chunk
     chunked_reviews = []
     for chunked_diff in chunked_diff_list:
-        if  len(chunked_diff > 0):
+        if  len(chunked_diff)> 0:
             response = get_code_review_stk_ai(review_prompt, chunked_diff)
             review_result = response
             chunked_reviews.append(review_result)
