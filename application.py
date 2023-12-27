@@ -83,9 +83,10 @@ def get_review(
     # Get summary by chunk
     chunked_reviews = []
     for chunked_diff in chunked_diff_list:
-        response = get_code_review_stk_ai(review_prompt, chunked_diff)
-        review_result = response
-        chunked_reviews.append(review_result)
+        if  len(chunked_diff > 0):
+            response = get_code_review_stk_ai(review_prompt, chunked_diff)
+            review_result = response
+            chunked_reviews.append(review_result)
     # If the chunked reviews are only one, return it
     if len(chunked_reviews) == 1:
         return chunked_reviews, chunked_reviews[0]
