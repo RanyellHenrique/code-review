@@ -151,12 +151,12 @@ def get_code_review_stk_ai(review_prompt: str, chunked_diff: str):
 
     output, error = process.communicate()
 
-    regex = re.compile(r'OICINI(.*?)LANIF')
-    response =  regex.search(output)
-
-    print("Saída do programa:", response)
+    print("Saída do programa:", output)
     print("Erro do programa:", error)
-    return response
+    return output
 
 if __name__ == "__main__":
     main()
+
+def sum(a: int, b: int):
+    return a + b
