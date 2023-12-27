@@ -120,12 +120,14 @@ def main(
     # Check if necessary environment variables are set or not
     check_required_env_vars()
     diff=os.getenv("PULL_REQUEST_DIFF")
+    print(f'AQUI ESTÁ O CODIGO DIFF: {diff}')
+    
     # Request a code review
     chunked_reviews, summarized_review = get_review(
         diff=diff,
         prompt_chunk_size=diff_chunk_size
     )
-    print(f'AQUI ESTÁ O CODIGO DIFF: {diff}')
+    
     logger.debug(f"Summarized review: {summarized_review}")
     logger.debug(f"Chunked reviews: {chunked_reviews}")
 
