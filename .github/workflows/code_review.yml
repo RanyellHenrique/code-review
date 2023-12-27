@@ -44,12 +44,9 @@ jobs:
       - name: test sh install
         run:
            sudo apt-get install -y expect
-      - name: test sh exec
-        run: |
-          expect script.sh 'Como posso fazer um bom code review? comece a resposta com INICIO ao contrario e encerre a resposta com a palavra FINAL ao Contrario'
       
       - name: Install Python dependencies
-        run: python -m pip install --upgrade pip requests pip install pexpect
+        run: python -m pip install --upgrade pip requests pip install pexpect pip install keyboard pip install click pip install click loguru
 
       - name: Execute Python Script
         id: python_exec
