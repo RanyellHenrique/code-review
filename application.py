@@ -148,12 +148,14 @@ def main(
 def get_code_review_stk_ai(review_prompt: str, chunked_diff: str):
     mesage = review_prompt + '\n' + chunked_diff
     process = subprocess.Popen(["expect", 'script.sh', mesage], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
     output, error = process.communicate()
-
     print("Saída do programa:", output)
     print("Erro do programa:", error)
-    return output
+
+    regex = re.compile(r'OICNI(.*?)(INALF|$)', re.DOTALL)
+    response =  regex.search(output)
+
+    return response.group(1)
 
 if __name__ == "__main__":
     main()
