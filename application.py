@@ -156,7 +156,7 @@ def get_code_review_stk_ai(review_prompt: str, chunked_diff: str):
 
     print("Saída do programa:", response)
     print("Erro do programa:", error)
-    return response
+    return output
 
 if __name__ == "__main__":
     main()
