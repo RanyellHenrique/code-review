@@ -32,12 +32,6 @@ jobs:
           client_id: ${{ secrets.STK_CLIENT_ID }}
           client_key: ${{ secrets.STK_CLIENT_KEY }}
           realm: ${{ secrets.STK_REALM }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
-          GIT_COMMIT_HASH: ${{ github.event.pull_request.head.sha }}
-          PULL_REQUEST_DIFF: |-
-            ${{ steps.get_diff.outputs.pull_request_diff }}
 
       - uses: actions/setup-python@v2
         with:
@@ -53,14 +47,10 @@ jobs:
       - name: Execute Python Script
         id: python_exec
         env:
-          client_id: ${{ secrets.STK_CLIENT_ID }}
-          client_key: ${{ secrets.STK_CLIENT_KEY }}
-          realm: ${{ secrets.STK_REALM }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
           GIT_COMMIT_HASH: ${{ github.event.pull_request.head.sha }}
-          PULL_REQUEST_DIFF: |-
-            ${{ steps.get_diff.outputs.pull_request_diff }}
+          PULL_REQUEST_DIFF: ${{ steps.get_diff.outputs.pull_request_diff }}
         run: |-
           python application.py
