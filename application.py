@@ -159,9 +159,3 @@ def get_code_review_stk_ai(review_prompt: str, chunked_diff: str):
 
 if __name__ == "__main__":
     main()
-
-def sum(a: int, b: int):
-    return a + b
-
-def concat(a: str, b: str):
-    return a + b
