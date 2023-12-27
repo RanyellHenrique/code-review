@@ -117,7 +117,7 @@ def format_review_comment(summarized_review: str, chunked_reviews: List[str]) ->
 
 
 @click.command()
-@click.option("--diff-chunk-size", type=click.INT, required=False, default=3500, help="Pull request diff")
+@click.option("--diff-chunk-size", type=click.INT, required=False, default=2000, help="Pull request diff")
 def main(
         diff_chunk_size: int
 ):
