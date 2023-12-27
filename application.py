@@ -93,7 +93,7 @@ def get_review(
 
     # Summarize the chunked reviews
     summarize_prompt = get_summarize_prompt()
-    
+
     summarized_review = ""
     if all(isinstance(review, str) for review in chunked_reviews):
         summarized_review = get_code_review_stk_ai(summarize_prompt, "\n".join(chunked_reviews))
@@ -105,7 +105,9 @@ def format_review_comment(summarized_review: str, chunked_reviews: List[str]) ->
     """Format reviews"""
     if len(chunked_reviews) == 1:
         return summarized_review
-    unioned_reviews = "\n".join(chunked_reviews)
+    unioned_reviews = ""
+    if all(isinstance(review, str) for review in chunked_reviews):
+        unioned_reviews = "\n".join(chunked_reviews)
     review = f"""<details>
     <summary>{summarized_review}</summary>
     {unioned_reviews}
