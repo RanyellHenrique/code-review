@@ -91,7 +91,7 @@ def get_review(
 
     # Summarize the chunked reviews
     summarize_prompt = get_summarize_prompt()
-    response = get_code_review_stk_ai(review_prompt)
+    response = get_code_review_stk_ai(review_prompt, chunked_diff)
     summarized_review = response
     return chunked_reviews, summarized_review
 
