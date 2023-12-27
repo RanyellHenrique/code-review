@@ -10,4 +10,5 @@ send "$mesage \r"
 sleep 0.5
 send "\x1b\x0d"
 expect "LANIF"
+
 interact
