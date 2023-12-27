@@ -92,7 +92,7 @@ def get_review(
 
     # Summarize the chunked reviews
     summarize_prompt = get_summarize_prompt()
-    response = get_code_review_stk_ai(summarize_prompt, "".join(chunked_reviews))
+    response = get_code_review_stk_ai(summarize_prompt, "\n".join(chunked_reviews))
     summarized_review = response
     return chunked_reviews, summarized_review
 
@@ -120,8 +120,7 @@ def main(
     # Check if necessary environment variables are set or not
     check_required_env_vars()
     diff=os.getenv("PULL_REQUEST_DIFF")
-    print(f'AQUI ESTÁ O CODIGO DIFF: {diff}')
-    
+
     # Request a code review
     chunked_reviews, summarized_review = get_review(
         diff=diff,
