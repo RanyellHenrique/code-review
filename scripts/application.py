@@ -17,7 +17,7 @@ def main():
                              git_commit_hash, 
                              hunk, 
                              file.path, 
-                             hunk.target_start)
+                             int(hunk.target_start))
 
 
 if __name__ == "__main__":
