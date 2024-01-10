@@ -27,4 +27,4 @@ jobs:
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
           GIT_COMMIT_HASH: ${{ github.event.pull_request.head.sha }}
         run: |-
-          python scripts/get_diff_github.py
+          python scripts/application.py
