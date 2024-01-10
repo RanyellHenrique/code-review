@@ -1,6 +1,6 @@
 import os
 from get_diff_github import get_diff_by_path
-from post_comments_pull_request import get_diff_by_path
+from post_comments_pull_request import post_comment_by_hunk
 
 def main():
     github_token=os.getenv("GITHUB_TOKEN")
@@ -11,7 +11,7 @@ def main():
     diff_files = get_diff_by_path(github_token, github_repository, pull_request_number)
     for file in diff_files:
         for hunk in file:
-            get_diff_by_path(github_token, 
+            post_comment_by_hunk(github_token, 
                              github_repository, 
                              pull_request_number, 
                              git_commit_hash, 
