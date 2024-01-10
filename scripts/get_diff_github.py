@@ -1,4 +1,5 @@
 import requests 
+import os
 
 
 def get_diff_pull_request(github_token: str, github_repository: str, pull_request_number: int):
