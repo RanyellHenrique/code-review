@@ -11,11 +11,12 @@ def main():
     diff_files = get_diff_by_path(github_token, github_repository, pull_request_number)
     for file in diff_files:
         for hunk in file:
+            # code_review_response = code_review_by_hunk(hunk)
             post_comment_by_hunk(github_token, 
                              github_repository, 
                              pull_request_number, 
                              git_commit_hash, 
-                             hunk, 
+                             "code_review_response", 
                              file.path, 
                              int(hunk.target_start))
 
