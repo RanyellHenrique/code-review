@@ -12,16 +12,27 @@ def get_comments_pull_request(github_token: str,
     }
     return requests.get(url=url, headers=headers)
 
+def format_and_populate_list_comments(response: Response, list_comments: list):
+    comments = response.json()
+    for comment in comments:
+        list_comments.append({
+            'id': comment['id'], 
+            'body': comment['body'], 
+            'position': comment['position'], 
+            'path': comment['path']
+            })
+
 def get_list_comments_pull_request(github_token: str,
                                    github_repository: str, 
                                    pull_request_number: int):
     
-    response = get_comments_pull_request(github_token, 
-                                         github_repository, 
-                                         pull_request_number)
+    response = get_comments_pull_request(github_token, github_repository, pull_request_number)
+    list_comments = []
     if response.status_code == 200:
-        comments = response.json()
-        for comment in comments:
-            print(comment['id'], comment['body'], comment['position'], comment['path'], comment['original_position'])
+        format_and_populate_list_comments(response, list_comments)
+        for item in list_comments:
+            print(item)
     else:
         print('Falha ao obter comentários:', response.content)
+    return list_comments
+
