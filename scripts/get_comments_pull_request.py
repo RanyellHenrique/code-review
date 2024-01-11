@@ -31,8 +31,6 @@ def get_list_comments_pull_request(github_token: str,
     list_comments = []
     if response.status_code == 200:
         format_and_populate_list_comments(response, list_comments)
-        for item in list_comments:
-            print(item)
     else:
         print('Falha ao obter comentários:', response.content)
     return list_comments

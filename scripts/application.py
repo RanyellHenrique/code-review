@@ -10,18 +10,20 @@ def main():
     pull_request_number=int(os.getenv("GITHUB_PULL_REQUEST_NUMBER"))
     git_commit_hash=os.getenv("GIT_COMMIT_HASH")
 
-    get_list_comments_pull_request(github_token, github_repository, pull_request_number)
-    #diff_files = get_diff_by_path(github_token, github_repository, pull_request_number)
-    #for file in diff_files:
-    #    for hunk in file:
-    #        # code_review_response = code_review_by_hunk(hunk)
-    #        post_comment_by_hunk(github_token, 
-    #                         github_repository, 
-    #                         pull_request_number, 
-    #                         git_commit_hash, 
-    #                         "code_review_response", 
-    #                         file.path, 
-    #                         int(hunk.target_start))
+    list_comments = get_list_comments_pull_request(github_token, github_repository, pull_request_number)
+    diff_files = get_diff_by_path(github_token, github_repository, pull_request_number)
+
+    for file in diff_files:
+        for hunk in file:
+            # code_review_response = code_review_by_hunk(hunk)
+            post_comment_by_hunk(github_token, 
+                             github_repository, 
+                             pull_request_number, 
+                             git_commit_hash, 
+                             "code_review_response", 
+                             file.path, 
+                             int(hunk.target_start) + 1,
+                             list_comments)
 
 if __name__ == "__main__":
     main()
