@@ -15,6 +15,7 @@ def code_review_by_hunk(hunk):
         bard_output = Bard().get_answer(format_input_text(hunk))
         return bard_output['content']
     except Exception:
+        print('Erro ao realizar o code review')
         return None
     
 

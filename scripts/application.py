@@ -16,9 +16,7 @@ def main():
 
     for file in diff_files:
         for hunk in file:
-            print('-----')
             if any(line.is_added for line in hunk):
-                print('----------------------------------------')
                 code_review_response = code_review_by_hunk(hunk)
                 if code_review_response != None:
                     post_comment_by_hunk(github_token, 
