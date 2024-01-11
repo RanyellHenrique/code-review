@@ -16,16 +16,16 @@ def main():
 
     for file in diff_files:
         for hunk in file:
-            code_review_response = code_review_by_hunk(hunk)
-            if code_review_response != None:
-                post_comment_by_hunk(github_token, 
-                                github_repository, 
-                                pull_request_number, 
-                                git_commit_hash, 
-                                code_review_response, 
-                                file.path, 
-                                int(hunk.target_start) + 1,
-                                list_comments)
-
+            if any(line.is_added for line in hunk):
+                code_review_response = code_review_by_hunk(hunk)
+                if code_review_response != None:
+                    post_comment_by_hunk(github_token, 
+                                        github_repository, 
+                                        pull_request_number, 
+                                        git_commit_hash, 
+                                        code_review_response, 
+                                        file.path, 
+                                        int(hunk.target_start) + 1,
+                                        list_comments)                                      
 if __name__ == "__main__":
     main()
