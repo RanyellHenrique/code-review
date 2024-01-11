@@ -17,6 +17,7 @@ def post_comment_pull_request(github_token: str,
     }
     comment = get_comment_by_path_and_position(path, position, list_comments)
     if comment != None:
+        print(comment)
         data = {
             'body': body,
             'in_reply_to': comment.id
