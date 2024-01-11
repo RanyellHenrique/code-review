@@ -26,5 +26,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PULL_REQUEST_NUMBER: ${{ github.event.pull_request.number }}
           GIT_COMMIT_HASH: ${{ github.event.pull_request.head.sha }}
+          _BARD_API_KEY: ${{ secrets._BARD_API_KEY }}
         run: |-
           python scripts/application.py
